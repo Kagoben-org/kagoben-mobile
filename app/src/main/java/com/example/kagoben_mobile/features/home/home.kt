@@ -130,7 +130,7 @@ fun home() {
 }
 
 @Composable
-private fun exampleBahanItem(
+private fun keranjangBelanjaCard(
     namaKegiatanBelanja: String,
     tanggalKegiatanBelanja: String,
     hargaBelanja: String,
@@ -204,7 +204,7 @@ private fun kegiatanBelanjaLazyColumn(
 ) {
     LazyColumn(modifier) {
         items(DataDummy.dataDummy.size) { index ->
-            exampleBahanItem(
+            keranjangBelanjaCard(
                 namaKegiatanBelanja = dataDummy[index].nama,
                 tanggalKegiatanBelanja = dataDummy[index].date,
                 hargaBelanja = dataDummy[index].total
