@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,12 +26,18 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,10 +47,7 @@ import com.example.kagoben_mobile.features.keranjangBelanja.dataDummyKeranjang.d
 
 
 data class BasketItem(
-    val id: String,
-    val name: String,
-    val price: Long,
-    val quantity: Int
+    val id: String, val name: String, val price: Long, val quantity: Int
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,117 +58,105 @@ fun keranjangBelanja() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        Scaffold(
-            bottomBar = {
-                NavigationBar(
+        Scaffold(bottomBar = {
+            NavigationBar(
+            ) {
+                Row(
+                    modifier = Modifier
+                        .background(
+                            Color.White
+                        )
+                        .fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .background(
-                                Color.White
-                            )
-                            .fillMaxSize(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.width(190.dp),
+                        colors = ButtonDefaults.buttonColors(Color(0xFFC7D66D))
                     ) {
-                        Button(
-                            onClick = {},
+                        Text(
+                            text = "Checkout",
+                            color = Color.Black,
+                        )
+                    }
+                }
+            }
+        }, topBar = {
+            NavigationBar {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .weight(6f),
+                    color = Color.Yellow
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Surface(
                             modifier = Modifier
-                                .width(190.dp),
-                            colors = ButtonDefaults.buttonColors(Color(0xFFC7D66D))
+                                .fillMaxSize()
+                                .weight(5f)
                         ) {
                             Text(
-                                text = "Checkout",
-                                color = Color.Black,
+                                text = "Rincian Belanja",
+                                modifier = Modifier.padding(
+                                        start = 20.dp, top = 30.dp
+                                    ),
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp,
+                                textAlign = TextAlign.Start
+                            )
+                        }
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .weight(2f)
+                        ) {
+                            Text(
+                                text = "01-04-2023", modifier = Modifier.padding(start = 20.dp)
                             )
                         }
                     }
                 }
-            },
-            topBar = {
-                NavigationBar {
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight()
-                            .weight(6f),
-                        color = Color.Yellow
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(2f)
+                        .fillMaxHeight(),
+                    color = Color.Blue
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize()
                     ) {
-                        Column(
+                        Surface(
                             modifier = Modifier
-                                .fillMaxSize()
+                                .fillMaxWidth()
+                                .fillMaxHeight()
+                                .weight(5f)
                         ) {
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .weight(5f)
-                            ) {
-                                Text(
-                                    text = "Rincian Belanja",
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 20.dp,
-                                            top = 30.dp
-                                        ),
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 20.sp,
-                                    textAlign = TextAlign.Start
-                                )
-                            }
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .weight(2f)
-                            ) {
-                                Text(
-                                    text = "01-04-2023",
-                                    modifier = Modifier
-                                        .padding(start = 20.dp)
-                                )
-                            }
+                            Text(
+                                text = "Total",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp,
+                                modifier = Modifier.padding(
+                                        start = 0.dp, top = 30.dp
+                                    ),
+                            )
                         }
-                    }
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(2f)
-                            .fillMaxHeight(),
-                        color = Color.Blue
-                    ) {
-                        Column(
+                        Surface(
                             modifier = Modifier
-                                .fillMaxSize()
+                                .fillMaxWidth()
+                                .weight(2f)
+                                .fillMaxHeight()
                         ) {
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .fillMaxHeight()
-                                    .weight(5f)
-                            ) {
-                                Text(
-                                    text = "Total",
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 20.sp,
-                                    modifier = Modifier
-                                        .padding(
-                                            start = 0.dp,
-                                            top = 30.dp
-                                        ),
-                                )
-                            }
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .weight(2f)
-                                    .fillMaxHeight()
-                            ) {
-                                Text(text = "$2.100.000")
-                            }
+                            Text(text = "$2.100.000")
                         }
                     }
                 }
             }
-        ) { innerPadding ->
+        }) { innerPadding ->
             Column(
                 modifier = Modifier
                     .padding(innerPadding)
@@ -176,11 +168,10 @@ fun keranjangBelanja() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BasketCard(
-    basketItem: BasketItem,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    basketItem: BasketItem, onClick: () -> Unit, modifier: Modifier = Modifier
 ) {
     Surface(
 
@@ -202,8 +193,7 @@ fun BasketCard(
                             .padding(top = 15.dp, bottom = 15.dp)
                     ) {
                         Text(
-                            text = basketItem.name,
-                            fontSize = 16.sp
+                            text = basketItem.name, fontSize = 16.sp
                         )
                     }
 
@@ -212,7 +202,18 @@ fun BasketCard(
                             .fillMaxWidth()
                             .padding(top = 15.dp, bottom = 15.dp)
                     ) {
-                        Text(text = "$" + basketItem.price.toString())
+                        var value: String by remember { mutableStateOf(basketItem.price.toString()) }
+
+                        BasicTextField(
+                            value = value,
+                            onValueChange = {value= it},
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            maxLines = 2,
+                            textStyle = TextStyle.Default.copy(
+                                fontSize = 14.sp
+                            )
+                        )
                     }
                 }
             }
@@ -229,10 +230,12 @@ fun BasketCard(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(60.dp)
-                            .padding(top = 15.dp, bottom = 15.dp),
-                        color = Color.Green
+                            .padding(top = 15.dp, bottom = 15.dp)
                     ) {
-                        Text(text = "Gambar")
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_do_disturb_24),
+                            contentDescription = null
+                        )
                     }
 
                     Surface(
@@ -246,33 +249,38 @@ fun BasketCard(
                                     .fillMaxHeight()
                                     .weight(1f)
                             ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.baseline_remove_circle_24),
+                                Image(painter = painterResource(id = R.drawable.baseline_remove_circle_24),
                                     contentDescription = null,
-                                    modifier = Modifier
-                                        .clickable { }
-                                )
+                                    modifier = Modifier.clickable { })
                             }
                             Surface(
                                 modifier = Modifier
                                     .fillMaxHeight()
                                     .weight(1f)
                             ) {
-                                Text(
-                                    text = basketItem.quantity.toString(),
-                                    textAlign = TextAlign.Center
-                                )
+
+                                var value: String by remember { mutableStateOf(basketItem.quantity.toString()) }
+
+                               BasicTextField(
+                                   value = value,
+                                   onValueChange = {value= it},
+                                   modifier = Modifier
+                                       .fillMaxSize(),
+                                   maxLines = 2,
+                                   textStyle = TextStyle.Default.copy(
+                                       fontSize = 14.sp,
+                                       textAlign = TextAlign.Center
+                                   )
+                               )
                             }
                             Surface(
                                 modifier = Modifier
                                     .fillMaxHeight()
                                     .weight(1f)
                             ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.baseline_add_circle_24),
+                                Image(painter = painterResource(id = R.drawable.baseline_add_circle_24),
                                     contentDescription = null,
-                                    modifier = Modifier
-                                        .clickable { })
+                                    modifier = Modifier.clickable { })
                             }
                         }
                     }

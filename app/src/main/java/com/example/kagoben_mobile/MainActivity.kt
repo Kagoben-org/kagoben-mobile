@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.kagoben_mobile.features.daftarBelanja.daftarBelanja
 import com.example.kagoben_mobile.features.home.home
 import com.example.kagoben_mobile.features.home.newRecord
 import com.example.kagoben_mobile.features.keranjangBelanja.keranjangBelanja
@@ -21,8 +22,9 @@ class MainActivity : ComponentActivity() {
 //            Signin()
 //            Signup()
 //            home()
+            daftarBelanja()
 //            newRecord()
-            keranjangBelanja()
+//            keranjangBelanja()
             }
         }
     }
