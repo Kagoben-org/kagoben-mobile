@@ -1,9 +1,9 @@
 # kagoben-mobile
 kagoben-mobile Repository
 
-Kelompok 1__
-Daffa Putra Narendra (215150207111049)__
-Dzaky Rafif Malik (215150207111004)__
-Firhan Imam Haekal (215150207111035)__
-Afwan Mulia Pratama (215150201111059)__
-FATHAN THORIQ HASYA (21515020011105)__
+Kelompok 1\
+Daffa Putra Narendra (215150207111049)\
+Dzaky Rafif Malik (215150207111004)\
+Firhan Imam Haekal (215150207111035)\
+Afwan Mulia Pratama (215150201111059)\
+FATHAN THORIQ HASYA (21515020011105)\
