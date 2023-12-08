@@ -1,8 +1,6 @@
-package com.example.kagoben_mobile.features.daftarBelanja
+package com.example.kagoben_mobile.presentation.features.daftarBelanja
 
-import com.example.kagoben_mobile.features.keranjangBelanja.BasketItem
-
-object dataDummyDaftarBelanja {
+object DataDummyDaftarBelanja {
     val dataDummy = listOf<bahanDaftarBelanja>(
         bahanDaftarBelanja(
             id = "1",

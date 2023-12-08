@@ -7,22 +7,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.kagoben_mobile.features.daftarBelanja.daftarBelanja
-import com.example.kagoben_mobile.features.home.home
-import com.example.kagoben_mobile.features.home.newRecord
-import com.example.kagoben_mobile.features.keranjangBelanja.keranjangBelanja
-import com.example.kagoben_mobile.features.splashScreene.splashScreen
+import com.example.kagoben_mobile.navigation.Navigation
+//import com.example.kagoben_mobile.presentation.features.daftarBelanja.daftarBelanja
 import com.example.kagoben_mobile.ui.theme.KagobenmobileTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            Navigation()
 //            splashScreen()
 //            Signin()
 //            Signup()
 //            home()
-            daftarBelanja()
+//            daftarBelanja()
 //            newRecord()
 //            keranjangBelanja()
             }
